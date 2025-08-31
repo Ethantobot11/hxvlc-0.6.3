@@ -184,7 +184,7 @@ class Handle
 		{
 			setupEnvVariables();
 
-			final args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>(0);
+			final args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>();
 
 			args.push_back("--aout=amem,none");
 			args.push_back("--intf=none");
