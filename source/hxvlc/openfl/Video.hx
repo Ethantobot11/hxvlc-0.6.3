@@ -995,7 +995,7 @@ class Video extends openfl.display.Bitmap
 	private function set_time(value:Int64):Int64
 	{
 		if (mediaPlayer != null)
-			LibVLC.media_player_set_time(mediaPlayer, cast value, LibVLC_Time_T);
+			LibVLC.media_player_set_time(mediaPlayer, cast value);
 
 		return value;
 	}
