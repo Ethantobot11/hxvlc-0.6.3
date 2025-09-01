@@ -167,47 +167,47 @@ class Handle
 	}
 
 	@:noCompletion
-	private static function initWithRetry(?options:Array<String>, ?resetCache:Bool = false):Bool
-	{
-		instanceMutex.acquire();
+    private static function initWithRetry(?options:Array<String>, ?resetCache:Bool = false):Bool
+    {
+	    instanceMutex.acquire();
 
-		if (loading)
-		{
-			instanceMutex.release();
+	    if (loading)
+	    {
+		    instanceMutex.release();
+		    return false;
+	    }
 
-			return false;
-		}
+	    loading = true;
 
-		loading = true;
+	    if (instance == null)
+	    {
+		    setupEnvVariables();
 
-		if (instance == null)
-		{
-			setupEnvVariables();
+	    	// ✅ Fix: explicitly pass 0 to StdVector constructor
+		    final args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>(0);
 
-			final args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>();
+		    args.push_back("--aout=amem,none");
+		    args.push_back("--intf=none");
+		    args.push_back("--text-renderer=none");
+		    args.push_back("--vout=vmem,none");
 
-			args.push_back("--aout=amem,none");
-			args.push_back("--intf=none");
-			args.push_back("--text-renderer=none");
-			args.push_back("--vout=vmem,none");
-
-			args.push_back("--ignore-config");
-			args.push_back("--drop-late-frames");
-			args.push_back("--no-interact");
-			args.push_back("--no-keyboard-events");
-			args.push_back("--no-mouse-events");
-			#if !HXVLC_SHARE_DIRECTORY
-			args.push_back("--no-lua");
-			#end
-			args.push_back("--no-snapshot-preview");
-			args.push_back("--no-spu");
-			#if !HXVLC_ENABLE_STATS
-			args.push_back("--no-stats");
-			#end
-			args.push_back("--no-sub-autodetect-file");
-			args.push_back("--no-video-title-show");
-			args.push_back("--no-volume-save");
-			args.push_back("--no-xlib");
+		    args.push_back("--ignore-config");
+		    args.push_back("--drop-late-frames");
+		    args.push_back("--no-interact");
+		    args.push_back("--no-keyboard-events");
+		    args.push_back("--no-mouse-events");
+		    #if !HXVLC_SHARE_DIRECTORY
+		    args.push_back("--no-lua");
+		    #end
+	    	args.push_back("--no-snapshot-preview");
+		    args.push_back("--no-spu");
+		    #if !HXVLC_ENABLE_STATS
+		    args.push_back("--no-stats");
+		    #end
+		    args.push_back("--no-sub-autodetect-file");
+		    args.push_back("--no-video-title-show");
+		    args.push_back("--no-volume-save");
+		    args.push_back("--no-xlib");
 
 			#if (windows || macos)
 			final pluginPath:Null<String> = Sys.getEnv('VLC_PLUGIN_PATH');
