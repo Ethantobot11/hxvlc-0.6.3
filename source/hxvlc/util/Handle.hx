@@ -184,7 +184,7 @@ class Handle
 		    setupEnvVariables();
 
 	    	// ✅ Fix: explicitly pass 0 to StdVector constructor
-		    var args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>(0);
+		    var args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>();
 
 		    args.push_back("--aout=amem,none");
 		    args.push_back("--intf=none");
