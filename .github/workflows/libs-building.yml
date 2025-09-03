@@ -18,13 +18,13 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r27c
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
       - name: Setup Dependencies
         run: sudo apt-get update && sudo apt-get install -y gettext autopoint automake ant cmake build-essential libtool-bin lua5.2 liblua5.2-dev patch pkg-config protobuf-compiler ragel subversion unzip git flex python3 wget nasm meson ninja-build
