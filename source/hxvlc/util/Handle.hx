@@ -58,6 +58,7 @@ using StringTools;
 	hx::SetTopOfStack((int *)0, true);
 }')
 #end
+@:include("<vector>")
 class Handle
 {
 	/**
