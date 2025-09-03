@@ -184,30 +184,30 @@ class Handle
 		{
 			setupEnvVariables();
 
-			final args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>();
+			final args:Array<String> = [];
 
-			args.push_back("--aout=amem,none");
-			args.push_back("--intf=none");
-			args.push_back("--text-renderer=none");
-			args.push_back("--vout=vmem,none");
+			args.push("--aout=amem,none");
+			args.push("--intf=none");
+			args.push("--text-renderer=none");
+			args.push("--vout=vmem,none");
 
-			args.push_back("--ignore-config");
-			args.push_back("--drop-late-frames");
-			args.push_back("--no-interact");
-			args.push_back("--no-keyboard-events");
-			args.push_back("--no-mouse-events");
+			args.push("--ignore-config");
+			args.push("--drop-late-frames");
+			args.push("--no-interact");
+			args.push("--no-keyboard-events");
+			args.push("--no-mouse-events");
 			#if !HXVLC_SHARE_DIRECTORY
-			args.push_back("--no-lua");
+			args.push("--no-lua");
 			#end
-			args.push_back("--no-snapshot-preview");
-			args.push_back("--no-spu");
+			args.push("--no-snapshot-preview");
+			args.push("--no-spu");
 			#if !HXVLC_ENABLE_STATS
-			args.push_back("--no-stats");
+			args.push("--no-stats");
 			#end
-			args.push_back("--no-sub-autodetect-file");
-			args.push_back("--no-video-title-show");
-			args.push_back("--no-volume-save");
-			args.push_back("--no-xlib");
+			args.push("--no-sub-autodetect-file");
+			args.push("--no-video-title-show");
+			args.push("--no-volume-save");
+			args.push("--no-xlib");
 
 			#if (windows || macos)
 			final pluginPath:Null<String> = Sys.getEnv('VLC_PLUGIN_PATH');
@@ -241,7 +241,7 @@ class Handle
 				}
 			}
 
-			instance = LibVLC.alloc(args.size(), untyped args.data());
+			instance = LibVLC.alloc(args.length, args);
 
 			if (instance == null)
 			{
