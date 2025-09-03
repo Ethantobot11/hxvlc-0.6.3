@@ -187,28 +187,28 @@ class Handle
 	    	// ✅ Fix: explicitly pass 0 to StdVector constructor
 		    var args:cpp.StdVector<cpp.ConstCharStar> = new cpp.StdVector<cpp.ConstCharStar>();
 
-		    args.push_back("--aout=amem,none");
-		    args.push_back("--intf=none");
-		    args.push_back("--text-renderer=none");
-		    args.push_back("--vout=vmem,none");
+		    args.push_back(untyped __cpp__("(const char*){0}", "--aout=amem,none"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--intf=none"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--text-renderer=none"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--vout=vmem,none"));
 
-		    args.push_back("--ignore-config");
-		    args.push_back("--drop-late-frames");
-		    args.push_back("--no-interact");
-		    args.push_back("--no-keyboard-events");
-		    args.push_back("--no-mouse-events");
+		    args.push_back(untyped __cpp__("(const char*){0}", "--ignore-config"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--drop-late-frames"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-interact"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-keyboard-events"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-mouse-events"));
 		    #if !HXVLC_SHARE_DIRECTORY
-		    args.push_back("--no-lua");
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-lua"));
 		    #end
-	    	args.push_back("--no-snapshot-preview");
-		    args.push_back("--no-spu");
+	    	args.push_back("--no-snapshot-preview"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-spu"));
 		    #if !HXVLC_ENABLE_STATS
-		    args.push_back("--no-stats");
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-stats"));
 		    #end
-		    args.push_back("--no-sub-autodetect-file");
-		    args.push_back("--no-video-title-show");
-		    args.push_back("--no-volume-save");
-		    args.push_back("--no-xlib");
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-sub-autodetect-file"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-video-title-show"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-volume-save"));
+		    args.push_back(untyped __cpp__("(const char*){0}", "--no-xlib"));
 
 			#if (windows || macos)
 			final pluginPath:Null<String> = Sys.getEnv('VLC_PLUGIN_PATH');
