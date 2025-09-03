@@ -60,10 +60,6 @@ using StringTools;
 #end
 @:headerCode('#include <vector>')
 class Handle {
-	var args:cpp.StdVector<cpp.ConstCharStar>;
-
-	public function new() {
-        args = new cpp.StdVector<cpp.ConstCharStar>(0);
 	/**
 	 * The instance of LibVLC that is used globally.
 	 */
