@@ -58,8 +58,9 @@ using StringTools;
 	hx::SetTopOfStack((int *)0, true);
 }')
 #end
-class Handle
-{
+@:headerCode('#include <vector>')
+class Handle {
+	var args:cpp.StdVector<cpp.ConstCharStar>;
 	/**
 	 * The instance of LibVLC that is used globally.
 	 */
