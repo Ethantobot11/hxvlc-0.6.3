@@ -200,7 +200,7 @@ class Handle
 		    #if !HXVLC_SHARE_DIRECTORY
 		    args.push_back(untyped __cpp__("(const char*){0}", "--no-lua"));
 		    #end
-	    	args.push_back("--no-snapshot-preview"));
+	    	args.push_back(untyped __cpp__("(const char*){0}", "--no-snapshot-preview"));
 		    args.push_back(untyped __cpp__("(const char*){0}", "--no-spu"));
 		    #if !HXVLC_ENABLE_STATS
 		    args.push_back(untyped __cpp__("(const char*){0}", "--no-stats"));
